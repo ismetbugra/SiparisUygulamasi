@@ -16,6 +16,7 @@
         android:layout_height="match_parent"
         app:cardCornerRadius="10dp"
         app:cardElevation="10dp"
+        android:layout_margin="10dp"
         android:padding="5dp"
         android:background="@color/white"
         >
@@ -24,7 +25,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/amber50"
+            android:background="@color/white"
             >
 
 

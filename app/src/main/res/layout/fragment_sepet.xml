@@ -5,13 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
+    app:layoutDescription="@xml/fragment_sepet_scene"
     tools:context=".ui.fragments.SepetFragment">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView3"
         android:layout_width="0dp"
         android:layout_height="50dp"
-        android:background="@color/amberlight"
+        app:cardElevation="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -19,14 +20,14 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/toolbar_backgorund"
-            >
+            android:background="@drawable/toolbar_backgorund">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="Sepetim"
                 android:textAlignment="center"
+                android:textColor="@color/white"
                 android:textSize="30dp" />
         </LinearLayout>
 

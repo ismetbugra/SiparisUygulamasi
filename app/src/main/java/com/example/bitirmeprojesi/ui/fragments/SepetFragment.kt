@@ -24,12 +24,12 @@ class SepetFragment : Fragment() {
     private lateinit var viewModel: SepetViewModel
     private lateinit var adapter: SepetAdapter
     private lateinit var auth: FirebaseAuth
+    private var sepetYemeklerList=ArrayList<SepetYemekler>()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModel=ViewModelProvider(this).get(SepetViewModel::class.java)
-
     }
 
     override fun onCreateView(
@@ -47,14 +47,18 @@ class SepetFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         auth=Firebase.auth
+        viewModel.sepettekiYemekleriGetir(auth.currentUser!!.email.toString())
+        binding.sepetRecyclerView.layoutManager=LinearLayoutManager(requireContext())
+        adapter= SepetAdapter(requireContext(),sepetYemeklerList,viewModel,auth)
+        binding.sepetRecyclerView.adapter=adapter
 
         val sepetYemeklerArrayList=ArrayList<SepetYemekler>()
-        adapter= SepetAdapter(requireContext(),sepetYemeklerArrayList,viewModel)
+        adapter= SepetAdapter(requireContext(),sepetYemeklerArrayList,viewModel,auth)
         binding.sepetRecyclerView.adapter=adapter
 
         viewModel.sepetYemeklerList.observe(viewLifecycleOwner, Observer {
             binding.sepetRecyclerView.layoutManager=LinearLayoutManager(requireContext())
-            adapter= SepetAdapter(requireContext(),it,viewModel)
+            adapter= SepetAdapter(requireContext(),it,viewModel,auth)
             binding.sepetRecyclerView.adapter=adapter
         })
 

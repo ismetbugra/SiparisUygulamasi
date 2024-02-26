@@ -9,8 +9,9 @@ import com.bumptech.glide.Glide
 import com.example.bitirmeprojesi.data.entity.SepetYemekler
 import com.example.bitirmeprojesi.databinding.SepetRecyclerRowBinding
 import com.example.bitirmeprojesi.ui.viewmodels.SepetViewModel
+import com.google.firebase.auth.FirebaseAuth
 
-class SepetAdapter(var mContext: Context,var sepetYemeklerList:List<SepetYemekler>,var viewModel: SepetViewModel): RecyclerView.Adapter<SepetAdapter.SepetVH>() {
+class SepetAdapter(var mContext: Context,var sepetYemeklerList:List<SepetYemekler>,var viewModel: SepetViewModel,var auth:FirebaseAuth): RecyclerView.Adapter<SepetAdapter.SepetVH>() {
     class SepetVH(var binding: SepetRecyclerRowBinding):RecyclerView.ViewHolder(binding.root) {
 
     }
@@ -35,7 +36,7 @@ class SepetAdapter(var mContext: Context,var sepetYemeklerList:List<SepetYemekle
         Glide.with(mContext).load(url).override(300,300).into(t.sepetYemekImageView)
 
         t.deleteYemekImageView.setOnClickListener {
-            viewModel.sepettekiYemekSil(gelenYemek.sepet_yemek_id.toInt(),"ibugra")
+            viewModel.sepettekiYemekSil(gelenYemek.sepet_yemek_id.toInt(),auth.currentUser!!.email.toString())
         }
     }
 }

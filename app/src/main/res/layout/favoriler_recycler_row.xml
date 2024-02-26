@@ -5,7 +5,7 @@
     android:orientation="vertical"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_margin="20dp"
+    android:layout_margin="10dp"
     android:padding="5dp"
     android:background="@color/white"
     >
@@ -15,13 +15,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:cardCornerRadius="10dp"
-        app:cardElevation="5dp"
+        app:cardElevation="10dp"
+        android:layout_margin="10dp"
         >
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/amber50"
+            android:background="@color/white"
             >
 
 
@@ -32,12 +33,11 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
-                android:src="@drawable/baseline_shopping_cart_24"
-                app:layout_constraintBottom_toTopOf="@+id/favorilerAdTextView"
+
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="1.0" />
+                app:srcCompat="@drawable/ic_launcher_background" />
 
             <TextView
                 android:id="@+id/favorilerAdTextView"
@@ -53,15 +53,30 @@
                 app:layout_constraintBottom_toTopOf="@+id/favorilerFiyatTextView"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/favorilerImageView"
-                app:layout_constraintVertical_bias="0.5" />
+                app:layout_constraintTop_toBottomOf="@+id/favorilerImageView" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:drawableLeft="@drawable/bike_resim"
+                android:drawablePadding="10dp"
+                android:text="Ücretsiz teslimat"
+                android:textSize="15dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/favorilerAdTextView" />
 
             <TextView
                 android:id="@+id/favorilerFiyatTextView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="12dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="8dp"
                 android:text="3₺"
@@ -70,8 +85,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/favorilerAdTextView"
-                app:layout_constraintVertical_bias="0.5" />
+                app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
