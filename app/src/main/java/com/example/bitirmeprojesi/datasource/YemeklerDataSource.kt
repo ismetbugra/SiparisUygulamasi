@@ -6,12 +6,14 @@ import com.example.bitirmeprojesi.data.entity.SepetYemekler
 import com.example.bitirmeprojesi.data.entity.SepetYemeklerCevap
 import com.example.bitirmeprojesi.data.entity.Yemekler
 import com.example.bitirmeprojesi.data.retrofit.YemeklerDao
+import com.example.bitirmeprojesi.data.room.AdresDao
+import com.example.bitirmeprojesi.data.room.SiparisDao
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.toObject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-class YemeklerDataSource(var ydao:YemeklerDao,var collectionFavoriler:CollectionReference) {
+class YemeklerDataSource(var ydao:YemeklerDao,var collectionFavoriler:CollectionReference,sdao:SiparisDao,adao:AdresDao) {
     var favorilerListesi=MutableLiveData<List<FavoriYemek>>()
 
     suspend fun tumYemekleriGetir():List<Yemekler>

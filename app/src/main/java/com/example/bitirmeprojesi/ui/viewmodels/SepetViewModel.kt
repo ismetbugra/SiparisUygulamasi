@@ -1,5 +1,6 @@
 package com.example.bitirmeprojesi.ui.viewmodels
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.bitirmeprojesi.data.entity.SepetYemekler
@@ -17,6 +18,11 @@ import javax.inject.Inject
 class SepetViewModel @Inject constructor(var yrepo: YemeklerRepository):ViewModel() {
     val sepetYemeklerList=MutableLiveData<List<SepetYemekler>>()
     val auth= Firebase.auth
+    //val adres=MutableLiveData<String>()
+    private val _adres = MutableLiveData<String>()
+    val adres: LiveData<String> get() = _adres
+
+
 
     init {
         sepettekiYemekleriGetir(auth.currentUser!!.email.toString())
@@ -33,5 +39,9 @@ class SepetViewModel @Inject constructor(var yrepo: YemeklerRepository):ViewMode
             yrepo.sepettekiYemekSil(sepet_yemek_id,kullanici_adi)
             sepettekiYemekleriGetir(auth.currentUser!!.email.toString())
         }
+    }
+
+    fun setAdres(adres: String) {
+        _adres.value = adres
     }
 }

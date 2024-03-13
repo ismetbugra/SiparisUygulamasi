@@ -22,6 +22,9 @@
         <action
             android:id="@+id/action_sepetFragment_to_detayFragment"
             app:destination="@id/detayFragment" />
+        <action
+            android:id="@+id/action_sepetFragment_to_sheetFragment"
+            app:destination="@id/sheetFragment" />
     </fragment>
     <fragment
         android:id="@+id/accountFragment"
@@ -46,4 +49,13 @@
             android:name="yemek"
             app:argType="com.example.bitirmeprojesi.data.entity.Yemekler" />
     </fragment>
+    <dialog
+        android:id="@+id/sheetFragment"
+        android:name="com.example.bitirmeprojesi.ui.fragments.SheetFragment"
+        android:label="fragment_sheet"
+        tools:layout="@layout/fragment_sheet" >
+        <action
+            android:id="@+id/action_sheetFragment_to_sepetFragment"
+            app:destination="@id/sepetFragment" />
+    </dialog>
 </navigation>
