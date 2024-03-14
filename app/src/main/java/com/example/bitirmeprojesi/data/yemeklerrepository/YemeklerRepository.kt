@@ -1,7 +1,9 @@
 package com.example.bitirmeprojesi.data.yemeklerrepository
 
 import androidx.lifecycle.MutableLiveData
+import com.example.bitirmeprojesi.data.entity.Adres
 import com.example.bitirmeprojesi.data.entity.FavoriYemek
+import com.example.bitirmeprojesi.data.entity.SiparisYemekler
 import com.example.bitirmeprojesi.data.entity.Yemekler
 import com.example.bitirmeprojesi.datasource.YemeklerDataSource
 
@@ -21,4 +23,12 @@ class YemeklerRepository(var yds:YemeklerDataSource) {
     fun favoriSil(doc_id:String) = yds.sil(doc_id)
 
     fun favoriYukle(): MutableLiveData<List<FavoriYemek>> = yds.favoriYukle()
+
+    suspend fun adresEkle(adres: Adres) = yds.adresEkle(adres)
+
+    suspend fun adresGetir(adres_adi:String):Adres = yds.adresGetir(adres_adi)
+
+    suspend fun siparisEkle(siparis: SiparisYemekler) = yds.siparisEkle(siparis)
+
+    suspend fun siparisleriGetir(kullanici_adi: String):List<SiparisYemekler> = yds.siparisleriGetir(kullanici_adi)
 }

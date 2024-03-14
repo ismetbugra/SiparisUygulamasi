@@ -8,7 +8,7 @@ import org.jetbrains.annotations.NotNull
 data class SiparisYemekler(@PrimaryKey(autoGenerate = true)
                            @NotNull var siparis_id:Int,
                            @NotNull var siparis_yemekler:String,
-                           @NotNull var siparis_toplam_fiyat:Int,
+                           @NotNull var siparis_toplam_fiyat:String,
                            @NotNull var kullanici_adi:String,
                            @NotNull var adres_id:Int) {
 }

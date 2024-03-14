@@ -1,9 +1,11 @@
 package com.example.bitirmeprojesi.datasource
 
 import androidx.lifecycle.MutableLiveData
+import com.example.bitirmeprojesi.data.entity.Adres
 import com.example.bitirmeprojesi.data.entity.FavoriYemek
 import com.example.bitirmeprojesi.data.entity.SepetYemekler
 import com.example.bitirmeprojesi.data.entity.SepetYemeklerCevap
+import com.example.bitirmeprojesi.data.entity.SiparisYemekler
 import com.example.bitirmeprojesi.data.entity.Yemekler
 import com.example.bitirmeprojesi.data.retrofit.YemeklerDao
 import com.example.bitirmeprojesi.data.room.AdresDao
@@ -13,7 +15,7 @@ import com.google.firebase.firestore.toObject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-class YemeklerDataSource(var ydao:YemeklerDao,var collectionFavoriler:CollectionReference,sdao:SiparisDao,adao:AdresDao) {
+class YemeklerDataSource(var ydao:YemeklerDao,var collectionFavoriler:CollectionReference,var sdao:SiparisDao,var adao:AdresDao) {
     var favorilerListesi=MutableLiveData<List<FavoriYemek>>()
 
     suspend fun tumYemekleriGetir():List<Yemekler>
@@ -66,4 +68,22 @@ class YemeklerDataSource(var ydao:YemeklerDao,var collectionFavoriler:Collection
     fun sil(doc_id: String){
         collectionFavoriler.document(doc_id).delete()
     }
+
+    suspend fun adresEkle(adres: Adres){
+        adao.insertAdres(adres)
+    }
+
+    suspend fun adresGetir(adres_adi:String):Adres{
+        return adao.adresGetir(adres_adi)
+
+    }
+
+    suspend fun siparisEkle(siparis:SiparisYemekler){
+        sdao.insertSiparis(siparis)
+    }
+
+    suspend fun siparisleriGetir(kullanici_adi: String):List<SiparisYemekler> =
+        withContext(Dispatchers.IO){
+            return@withContext sdao.getAllSiparis(kullanici_adi)
+        }
 }

@@ -13,4 +13,7 @@ interface AdresDao {
 
     @Query("SELECT*FROM adres")
     suspend fun getALlAdres():List<Adres>
+
+    @Query("SELECT*FROM adres WHERE adres_bilgisi= :adres_adi")
+    suspend fun adresGetir(adres_adi:String):Adres
 }
